@@ -1,0 +1,121 @@
+{
+  "tasks": [
+    {
+      "id": "task_1",
+      "wcet": 14
+    },
+    {
+      "id": "task_2",
+      "wcet": 13
+    },
+    {
+      "id": "task_3",
+      "wcet": 11
+    },
+    {
+      "id": "task_4",
+      "wcet": 13
+    },
+    {
+      "id": "task_5",
+      "wcet": 12
+    },
+    {
+      "id": "task_6",
+      "wcet": 13
+    },
+    {
+      "id": "task_7",
+      "wcet": 7
+    },
+    {
+      "id": "task_8",
+      "wcet": 5
+    },
+    {
+      "id": "task_9",
+      "wcet": 18
+    },
+    {
+      "id": "task_10",
+      "wcet": 10
+    }
+  ],
+  "edges": [
+    {
+      "source": "task_1",
+      "target": "task_2",
+      "data": 18
+    },
+    {
+      "source": "task_1",
+      "target": "task_3",
+      "data": 14
+    },
+    {
+      "source": "task_1",
+      "target": "task_4",
+      "data": 9
+    },
+    {
+      "source": "task_1",
+      "target": "task_5",
+      "data": 12
+    },
+    {
+      "source": "task_1",
+      "target": "task_6",
+      "data": 11
+    },
+    {
+      "source": "task_2",
+      "target": "task_9",
+      "data": 16
+    },
+    {
+      "source": "task_2",
+      "target": "task_7",
+      "data": 19
+    },
+    {
+      "source": "task_3",
+      "target": "task_7",
+      "data": 23
+    },
+    {
+      "source": "task_4",
+      "target": "task_9",
+      "data": 23
+    },
+    {
+      "source": "task_4",
+      "target": "task_7",
+      "data": 27
+    },
+    {
+      "source": "task_5",
+      "target": "task_9",
+      "data": 13
+    },
+    {
+      "source": "task_6",
+      "target": "task_8",
+      "data": 15
+    },
+    {
+      "source": "task_7",
+      "target": "task_10",
+      "data": 17
+    },
+    {
+      "source": "task_8",
+      "target": "task_10",
+      "data": 11
+    },
+    {
+      "source": "task_9",
+      "target": "task_10",
+      "data": 13
+    }
+  ]
+}

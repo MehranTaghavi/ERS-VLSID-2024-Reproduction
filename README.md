@@ -66,3 +66,10 @@ Ensure you have Python 3.10+ installed, then run:
 ```bash
 pip install -r requirements.txt
 ```
+
+To also run the test suite, install the development dependencies instead (this includes
+everything in `requirements.txt` plus `pytest`):
+
+```bash
+pip install -r requirements-dev.txt
+```

@@ -4,9 +4,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from motivation.run_motivation_example import motivation_graph
 from src.energy import dynamic_task_energy, energy_breakdown
-from src.esum import compute_ranks, esum
 from src.ers import ers
 from src.models import DAG, Edge, Platform, Task
+from src.esum import compute_ranks, esum, default_tie_breaker
 
 
 def test_motivation_ranks():
@@ -46,3 +46,31 @@ def test_safe_ers_meets_deadline():
 #         "task_2": 1, "task_6": 1, "task_8": 1,
 #         "task_3": 2, "task_7": 2,
 #     }
+
+def test_esum_tie_breaking_strategy():
+    # Candidates format: (finish_time, hosts_predecessor, processor_id, start_time)
+    
+    # Scenario 1: Identical EFTs. One processor hosts a predecessor.
+    # It must select Processor 1 (True).
+    candidates_1 = [
+        (100.0, False, 0, 90.0),
+        (100.0, True, 1, 90.0),
+        (100.0, False, 2, 90.0)
+    ]
+    assert default_tie_breaker(candidates_1)[2] == 1
+    
+    # Scenario 2: Identical EFTs. Neither hosts a predecessor.
+    # It must deterministically select the lowest processor ID (Processor 1).
+    candidates_2 = [
+        (100.0, False, 1, 90.0),
+        (100.0, False, 2, 90.0)
+    ]
+    assert default_tie_breaker(candidates_2)[2] == 1
+    
+    # Scenario 3: Different EFTs.
+    # It must select the lowest EFT (Processor 1) regardless of the locality flag.
+    candidates_3 = [
+        (110.0, True, 0, 90.0),
+        (100.0, False, 1, 90.0)
+    ]
+    assert default_tie_breaker(candidates_3)[2] == 1
